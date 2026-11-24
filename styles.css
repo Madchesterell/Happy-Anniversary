@@ -335,3 +335,39 @@ body{min-width:320px}
   .section-topline{gap:10px}
   .section-topline span:last-child{text-align:right}
 }
+
+
+/* TARGETED INTERACTION FIXES — preserve the existing visual design */
+/* Both dark primary actions share the same shape and dimensions. */
+.button-dark{
+  min-width:180px;
+  border-radius:10px;
+}
+
+/* Keep the decorative orbit from covering the chapter navigation. */
+.chapter-card:after{pointer-events:none}
+.chapter-controls{position:relative;z-index:1}
+.chapter-controls button{position:relative;z-index:2;pointer-events:auto}
+
+/* Keep the polaroid's 3D faces stable; hover must never alter flip state. */
+.polaroid{-webkit-perspective:1100px;perspective:1100px}
+.polaroid-inner{
+  -webkit-transform-style:preserve-3d;
+  transform-style:preserve-3d;
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+}
+.polaroid-front,.polaroid-back{
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+}
+.polaroid-front{transform:rotateY(0deg) translateZ(1px)}
+.polaroid-back{transform:rotateY(180deg) translateZ(1px)}
+.polaroid.is-flipped .polaroid-inner{transform:rotateY(180deg) scale(1.035)}
+/* Do not apply filter to the preserve-3d element: filter can flatten its faces. */
+.polaroid:hover .polaroid-inner{filter:none}
+@media (hover:hover) and (pointer:fine){
+  .polaroid:hover .polaroid-front,
+  .polaroid:hover .polaroid-back{
+    box-shadow:0 12px 30px rgba(0,0,0,.28)
+  }
+}

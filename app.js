@@ -54,25 +54,69 @@ const chapters = [
 ];
 let activeChapter=0;
 const chapterTabs=$$(".chapter-tab");
-const chapterNumber=$("#chapterNumber"),chapterKicker=$("#chapterKicker"),chapterTitle=$("#chapterTitle"),chapterText=$("#chapterText"),chapterNote=$("#chapterNote"),chapterProgress=$("#chapterProgress"),chapterPrev=$("#chapterPrev"),chapterNext=$("#chapterNext");
-function showChapter(index){
-  activeChapter=Math.max(0,Math.min(chapters.length-1,index));
-  const c=chapters[activeChapter];
-  chapterNumber.textContent=`CHAPTER ${String(activeChapter+1).padStart(2,"0")} / 05`;
-  chapterKicker.textContent=c.kicker;chapterTitle.textContent=c.title;chapterText.textContent=c.text;chapterNote.textContent=c.note;
-  chapterProgress.textContent=`${String(activeChapter+1).padStart(2,"0")} — 05`;
-  chapterPrev.disabled=activeChapter===0;chapterNext.disabled=activeChapter===chapters.length-1;
-  chapterTabs.forEach((tab,i)=>{const active=i===activeChapter;tab.classList.toggle("is-active",active);tab.setAttribute("aria-selected",String(active));});
-}
-chapterTabs.forEach(tab=>tab.addEventListener("click",()=>showChapter(Number(tab.dataset.chapter))));
-chapterPrev?.addEventListener("click",()=>showChapter(activeChapter-1));
-chapterNext?.addEventListener("click",()=>showChapter(activeChapter+1));
+const chapterNumber=$("#chapterNumber");
+const chapterKicker=$("#chapterKicker");
+const chapterTitle=$("#chapterTitle");
+const chapterText=$("#chapterText");
+const chapterNote=$("#chapterNote");
+const chapterProgress=$("#chapterProgress");
+const chapterPrev=$("#chapterPrev");
+const chapterNext=$("#chapterNext");
 
-/* Polaroid flip */
-$$(".polaroid").forEach(card=>card.addEventListener("click",()=>{
-  const flipped=card.classList.toggle("is-flipped");
-  card.setAttribute("aria-pressed",String(flipped));
+function showChapter(index){
+  if(!chapters.length) return;
+
+  const requestedIndex=Number(index);
+  activeChapter=Math.max(0,Math.min(
+    chapters.length-1,
+    Number.isFinite(requestedIndex)?requestedIndex:0
+  ));
+
+  const chapter=chapters[activeChapter];
+  const current=String(activeChapter+1).padStart(2,"0");
+  const total=String(chapters.length).padStart(2,"0");
+
+  if(chapterNumber) chapterNumber.textContent=`CHAPTER ${current} / ${total}`;
+  if(chapterKicker) chapterKicker.textContent=chapter.kicker;
+  if(chapterTitle) chapterTitle.textContent=chapter.title;
+  if(chapterText) chapterText.textContent=chapter.text;
+  if(chapterNote) chapterNote.textContent=chapter.note;
+  if(chapterProgress) chapterProgress.textContent=`${current} — ${total}`;
+
+  if(chapterPrev) chapterPrev.disabled=activeChapter===0;
+  if(chapterNext) chapterNext.disabled=activeChapter===chapters.length-1;
+
+  chapterTabs.forEach((tab,i)=>{
+    const isActive=i===activeChapter;
+    tab.classList.toggle("is-active",isActive);
+    tab.setAttribute("aria-selected",String(isActive));
+  });
+}
+
+chapterTabs.forEach(tab=>tab.addEventListener("click",()=>{
+  const index=Number.parseInt(tab.dataset.chapter,10);
+  if(Number.isInteger(index)) showChapter(index);
 }));
+
+chapterPrev?.addEventListener("click",event=>{
+  event.preventDefault();
+  showChapter(activeChapter-1);
+});
+
+chapterNext?.addEventListener("click",event=>{
+  event.preventDefault();
+  if(activeChapter<chapters.length-1) showChapter(activeChapter+1);
+});
+
+/* Polaroid flip: click/keyboard changes the state; hover is decorative only. */
+$$(".polaroid").forEach(card=>{
+  card.addEventListener("click",()=>{
+    const isCurrentlyFlipped=card.getAttribute("aria-pressed")==="true";
+    const nextFlippedState=!isCurrentlyFlipped;
+    card.classList.toggle("is-flipped",nextFlippedState);
+    card.setAttribute("aria-pressed",String(nextFlippedState));
+  });
+});
 
 /* Envelope and letter */
 const envelope=$("#envelope"),loveLetter=$("#loveLetter"),envelopeInstruction=$("#envelopeInstruction");

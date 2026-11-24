@@ -1,22 +1,34 @@
-# Our Little Forever — Anniversary Website
+# The Art of Us — Anniversary Edition
 
-Website statis HTML5, CSS3, dan Vanilla JavaScript. Tidak membutuhkan Node.js, bundler, atau proses build.
+Website anniversary statis berbasis HTML5, CSS3, dan Vanilla JavaScript. Tidak membutuhkan bundler, framework, atau dependensi npm.
 
-## Jalankan lokal
-Buka `index.html` di browser. Untuk hasil yang lebih konsisten, jalankan melalui Live Server atau server statis sederhana.
+## Struktur
 
-## Ganti aset
-- Foto hero: di `index.html`, ganti SVG di `.hero-photo` dengan `<img src="./assets/hero.webp" alt="Foto kita">`.
-- Foto galeri: ganti elemen `.polaroid-image` dengan elemen `<img>` atau atur `background-image` pada `.image-one` hingga `.image-four` di `styles.css`.
-- Musik: letakkan file audio yang kamu miliki di `assets/bergema-sampai-selamanya.mp3`, atau ubah `src` elemen `<audio>` di bagian akhir `index.html`.
-Pastikan kamu memiliki hak/izin untuk menggunakan file musik dan foto.
+```text
+anniversary-reimagined/
+├── index.html
+├── styles.css
+├── app.js
+├── README.md
+└── assets/
+    ├── hero.webp                         (opsional, ganti ilustrasi SVG)
+    └── bergema-sampai-selamanya.mp3      (tambahkan file audio sendiri)
+```
+
+## Personalisasi
+- Hero: di `index.html`, ganti SVG di `.hero-image` dengan `<img src="./assets/hero.webp" alt="Foto kita">`.
+- Galeri: ganti visual CSS `.memory-one .polaroid-image` sampai `.memory-four .polaroid-image` dengan elemen `<img>` dan `object-fit: cover`, atau gunakan foto sebagai `background-image`.
+- Cerita: ubah array `chapters` di `app.js`.
+- Surat: ubah isi `.love-letter` di `index.html`.
+- Musik: letakkan audio yang kamu miliki di `assets/bergema-sampai-selamanya.mp3`. Browser memulai audio setelah interaksi pengguna.
+- Wish tersimpan pada localStorage browser/perangkat yang dipakai; tidak tersinkron lintas perangkat.
 
 ## Deploy ke GitHub Pages
 1. Buat repository GitHub baru.
-2. Upload `index.html`, `styles.css`, `app.js`, dan folder `assets` ke root repository.
+2. Upload isi folder ini ke root repository (pastikan `index.html` berada di root).
 3. Buka **Settings → Pages**.
 4. Pada **Build and deployment**, pilih **Deploy from a branch**.
 5. Pilih branch `main` dan folder `/ (root)`, lalu klik **Save**.
-6. Tunggu proses deploy dan buka URL GitHub Pages yang ditampilkan.
+6. Tunggu deploy selesai dan buka URL GitHub Pages yang ditampilkan.
 
-Semua referensi aset menggunakan path relatif `./...`, sehingga cocok untuk GitHub Pages.
+Semua aset memakai path relatif `./...`, jadi cocok untuk GitHub Pages termasuk repository project pages.

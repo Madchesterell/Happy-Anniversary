@@ -1,190 +1,162 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="id" data-type="personal">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fdf8f5">
-  <meta name="description" content="Sebuah jurnal kecil tentang perjalanan kita. Happy anniversary.">
-  <title>Our Little Forever — Happy Anniversary</title>
+  <meta name="theme-color" content="#211D1A">
+  <meta name="description" content="Sebuah arsip kecil tentang kita—tentang awal, tumbuh, dan memilih satu sama lain.">
+  <meta property="og:title" content="The Art of Us — Anniversary Edition">
+  <meta property="og:description" content="A little archive of everything that makes us, us.">
+  <meta property="og:type" content="website">
+  <title>The Art of Us — Anniversary Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
 </head>
 <body>
-  <div class="ambient ambient-one" aria-hidden="true">✦</div>
-  <div class="ambient ambient-two" aria-hidden="true">♡</div>
-  <div class="ambient ambient-three" aria-hidden="true">☁</div>
-
-  <header class="site-header">
-    <a class="wordmark" href="#home" aria-label="Kembali ke awal">little<span>forever</span>.</a>
-    <nav aria-label="Navigasi utama">
-      <a href="#chapters">Our story</a>
-      <a href="#memories">Memories</a>
-      <a href="#letter">A letter</a>
-      <a href="#wishes">Wishes</a>
+  <a class="skip-link" href="#main">Lewati ke konten</a>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="The Art of Us, kembali ke atas"><span class="brand-mark">A<span>♡</span>U</span><span class="brand-name">THE ART OF US<small>AN ANNIVERSARY EDITION</small></span></a>
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <a href="#chapters">Our story</a><a href="#memories">The archive</a><a href="#letter">A letter</a><a href="#wishes">The next</a>
     </nav>
-    <button class="music-pill" id="musicToggle" type="button" aria-pressed="false">
-      <span class="music-icon" aria-hidden="true">♫</span>
-      <span id="musicButtonText">Putar lagu</span>
-    </button>
+    <button class="music-control" id="musicToggle" type="button" aria-pressed="false"><span class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="musicButtonText">Play our song</span></button>
   </header>
 
-  <main>
-    <section class="hero section-wrap" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-line"></span> a little celebration of us</p>
-        <h1>Happy Anniversary,<br><em>My Safe Place.</em></h1>
-        <p class="hero-description">Tekan tombol di bawah untuk melihat kembali perjalanan kita. Ada banyak hal sederhana yang ternyata menjadi cerita paling berarti.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" id="openStory" href="#chapters">Buka Cerita Kita <span>💌</span></a>
-          <p class="audio-caption"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span><span id="trackStatus">Nadhif Basalamah — Bergema Sampai Selamanya</span></p>
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy" data-enter>
+        <p class="eyebrow"><span class="eyebrow-line"></span> VOLUME 01 <span>·</span> A STUDY IN US</p>
+        <h1 id="hero-title">Somehow,<br>it always<br>comes back <em>to you.</em></h1>
+        <p class="hero-lede">Untuk semua versi kita yang sudah lewat, yang sedang tumbuh, dan yang belum sempat kita bayangkan.</p>
+        <div class="hero-cta-row">
+          <a class="button button-dark" id="openStory" href="#chapters">Enter our story <span aria-hidden="true">↗</span></a>
+          <p class="track-caption"><span class="track-dot"></span><span id="trackStatus">Nadhif Basalamah — Bergema Sampai Selamanya</span></p>
         </div>
-        <p class="handwritten hero-note">for all the days, and all the little things ♡</p>
+        <p class="hero-script">to my favourite plot twist, always.</p>
       </div>
-
-      <div class="hero-art" aria-label="Ilustrasi bingkai foto kenangan">
-        <div class="art-sparkle sparkle-a">✧</div>
-        <div class="art-sparkle sparkle-b">✦</div>
-        <div class="photo-frame hero-frame">
-          <div class="hero-photo">
-            <!-- Ganti dengan foto: <img src="./assets/hero.webp" alt="Foto kita"> -->
-            <svg class="hero-illustration" viewBox="0 0 520 570" role="img" aria-label="Ilustrasi dua orang duduk berdampingan saat senja">
-              <defs>
-                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8c3b0"/><stop offset="1" stop-color="#f7dfd2"/></linearGradient>
-                <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff2c9"/><stop offset="1" stop-color="#e8ad91"/></linearGradient>
-              </defs>
-              <rect width="520" height="570" fill="url(#sky)"/>
-              <circle cx="365" cy="150" r="73" fill="url(#sun)" opacity=".95"/>
-              <path d="M0 350 Q100 275 205 350 T520 330 V570 H0Z" fill="#c98e80" opacity=".45"/>
-              <path d="M0 410 Q135 335 260 410 T520 390 V570 H0Z" fill="#8e7770" opacity=".38"/>
-              <path d="M0 475 Q130 420 260 470 T520 455 V570 H0Z" fill="#6e5a54" opacity=".38"/>
-              <g transform="translate(95 220)">
-                <path d="M42 230 Q30 125 88 90 Q140 65 170 125 L198 285 H35Z" fill="#6e5654"/>
-                <circle cx="115" cy="82" r="43" fill="#b87968"/>
-                <path d="M73 82 Q65 15 125 25 Q168 30 159 92 Q130 55 73 82Z" fill="#443532"/>
-                <path d="M170 240 Q164 140 218 110 Q270 90 298 155 L318 290 H168Z" fill="#a75f61"/>
-                <circle cx="245" cy="102" r="42" fill="#d59a80"/>
-                <path d="M205 105 Q193 37 254 43 Q294 48 286 112 Q253 76 205 105Z" fill="#493734"/>
-                <path d="M164 160 Q190 145 212 164" fill="none" stroke="#f4d4c4" stroke-width="12" stroke-linecap="round"/>
-              </g>
-              <g fill="#fff4e9" opacity=".7"><circle cx="75" cy="90" r="3"/><circle cx="120" cy="145" r="2"/><circle cx="445" cy="260" r="3"/><circle cx="405" cy="80" r="2"/></g>
-            </svg>
-          </div>
-          <div class="frame-caption"><span>our favorite kind of sunset</span><span>♡</span></div>
+      <div class="hero-visual" aria-label="Ilustrasi kenangan saat senja" data-enter>
+        <div class="visual-index">FIG. 01 <span>THE TWO OF US</span></div>
+        <div class="hero-image">
+          <!-- Ganti isi visual ini dengan <img src="./assets/hero.webp" alt="Foto kita"> jika foto pribadi sudah tersedia. -->
+          <svg viewBox="0 0 720 850" role="img" aria-label="Dua siluet berdampingan di bawah langit senja">
+            <defs>
+              <linearGradient id="evening" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d9a18b"/><stop offset=".55" stop-color="#edc9a8"/><stop offset="1" stop-color="#f0dfc5"/></linearGradient>
+              <linearGradient id="field" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#77765b"/><stop offset="1" stop-color="#3e5147"/></linearGradient>
+            </defs>
+            <rect width="720" height="850" fill="url(#evening)"/>
+            <circle cx="505" cy="225" r="112" fill="#f7e6bd" opacity=".88"/>
+            <path d="M0 520 Q170 410 330 520 T720 485 V850 H0Z" fill="#a77c68" opacity=".58"/>
+            <path d="M0 605 Q180 500 365 605 T720 565 V850 H0Z" fill="url(#field)"/>
+            <path d="M0 730 Q190 650 360 720 T720 700 V850 H0Z" fill="#34483f"/>
+            <g transform="translate(145 345)">
+              <path d="M25 470 Q20 250 105 190 Q170 155 218 235 L255 470Z" fill="#34423c"/>
+              <circle cx="140" cy="155" r="61" fill="#76594d"/>
+              <path d="M82 155 Q68 53 151 65 Q213 70 202 171 Q160 113 82 155Z" fill="#382f2d"/>
+              <path d="M240 470 Q245 275 330 220 Q390 190 435 265 L475 470Z" fill="#8e514c"/>
+              <circle cx="355" cy="182" r="59" fill="#b67d66"/>
+              <path d="M298 183 Q286 84 365 91 Q421 97 414 190 Q366 137 298 183Z" fill="#453331"/>
+              <path d="M207 285 Q245 255 286 285" fill="none" stroke="#d4a38c" stroke-width="22" stroke-linecap="round"/>
+            </g>
+            <g fill="#fff2dc" opacity=".65"><circle cx="105" cy="150" r="4"/><circle cx="630" cy="390" r="3"/><circle cx="570" cy="95" r="2"/></g>
+          </svg>
+          <span class="image-stamp">KEPT<br>WITH LOVE</span>
         </div>
-        <span class="floating-note note-top">you & me</span>
-        <span class="floating-note note-bottom">one story, two hearts</span>
+        <div class="visual-footer"><span>AN ONGOING COLLECTION</span><span>EST. THE DAY WE MET&nbsp; ♡</span></div>
+        <span class="orbit-note">you make<br>ordinary, golden</span>
       </div>
-      <a class="scroll-cue" href="#chapters"><span></span> scroll to our story</a>
+      <a class="hero-scroll" href="#chapters"><span class="scroll-line"></span> SCROLL TO REMEMBER</a>
     </section>
 
-    <section class="chapters-section section-wrap section-pad" id="chapters">
-      <div class="section-heading">
-        <p class="eyebrow">chapter by chapter</p>
-        <h2>Every love has a story.<br><em>This is ours.</em></h2>
-        <p>Lima babak kecil yang membentuk perjalanan besar kita. Pilih satu babak, lalu baca kembali potongan ceritanya.</p>
+    <section class="chapter-section section-shell" id="chapters">
+      <div class="section-topline"><span>01 / THE STORY</span><span>FIVE CHAPTERS, ONE US</span></div>
+      <div class="chapter-intro">
+        <p class="eyebrow">A TIMELINE OF LITTLE MIRACLES</p>
+        <h2>Not a perfect story.<br><em>Our favourite one.</em></h2>
+        <p class="intro-copy">Lima potongan waktu. Lima alasan untuk berhenti sebentar, lalu bersyukur bahwa kita sampai di sini bersama.</p>
       </div>
       <div class="chapter-layout">
         <div class="chapter-tabs" role="tablist" aria-label="Pilih babak perjalanan">
-          <button class="chapter-tab is-active" type="button" role="tab" aria-selected="true" data-chapter="0"><span>01</span><span>The Beginning</span><b>↗</b></button>
-          <button class="chapter-tab" type="button" role="tab" aria-selected="false" data-chapter="1"><span>02</span><span>The Spark</span><b>↗</b></button>
-          <button class="chapter-tab" type="button" role="tab" aria-selected="false" data-chapter="2"><span>03</span><span>Sweet &amp; Sour</span><b>↗</b></button>
-          <button class="chapter-tab" type="button" role="tab" aria-selected="false" data-chapter="3"><span>04</span><span>Growing Together</span><b>↗</b></button>
-          <button class="chapter-tab" type="button" role="tab" aria-selected="false" data-chapter="4"><span>05</span><span>Today &amp; Forever</span><b>↗</b></button>
+          <button class="chapter-tab is-active" type="button" role="tab" aria-selected="true" data-chapter="0"><span class="tab-no">01</span><span>The Beginning</span><span class="tab-arrow">↗</span></button>
+          <button class="chapter-tab" type="button" role="tab" aria-selected="false" data-chapter="1"><span class="tab-no">02</span><span>The Spark</span><span class="tab-arrow">↗</span></button>
+          <button class="chapter-tab" type="button" role="tab" aria-selected="false" data-chapter="2"><span class="tab-no">03</span><span>Sweet &amp; Sour</span><span class="tab-arrow">↗</span></button>
+          <button class="chapter-tab" type="button" role="tab" aria-selected="false" data-chapter="3"><span class="tab-no">04</span><span>Growing Together</span><span class="tab-arrow">↗</span></button>
+          <button class="chapter-tab" type="button" role="tab" aria-selected="false" data-chapter="4"><span class="tab-no">05</span><span>Today &amp; Forever</span><span class="tab-arrow">↗</span></button>
         </div>
         <article class="chapter-card" aria-live="polite">
-          <div class="chapter-card-top"><span id="chapterNumber">CHAPTER 01 / 05</span><span class="chapter-heart">♡</span></div>
+          <div class="chapter-card-head"><span id="chapterNumber">CHAPTER 01 / 05</span><span class="chapter-symbol">✳</span></div>
           <p class="chapter-kicker" id="chapterKicker">where it all began</p>
           <h3 id="chapterTitle">The Beginning</h3>
-          <p id="chapterText">Dari percakapan sederhana yang awalnya terasa biasa, ternyata semesta sedang memperkenalkan seseorang yang akan menjadi bagian penting dalam hidupku.</p>
-          <p class="handwritten chapter-signature" id="chapterNote">and then, there was you.</p>
+          <p class="chapter-text" id="chapterText">Dari percakapan sederhana yang awalnya terasa biasa, ternyata semesta sedang memperkenalkan seseorang yang akan menjadi bagian penting dalam hidupku.</p>
+          <p class="chapter-sign" id="chapterNote">and then, there was you.</p>
           <div class="chapter-controls"><button type="button" id="chapterPrev" aria-label="Babak sebelumnya" disabled>←</button><span id="chapterProgress">01 — 05</span><button type="button" id="chapterNext" aria-label="Babak berikutnya">→</button></div>
         </article>
       </div>
     </section>
 
-    <section class="memories-section section-wrap section-pad" id="memories">
-      <div class="section-heading heading-row">
-        <div><p class="eyebrow">little moments, kept forever</p><h2>Our memory <em>lane.</em></h2></div>
-        <p>Sentuh atau klik foto untuk memperbesar dan membaliknya. Di balik setiap foto, ada cerita kecil yang ingin kusimpan.</p>
+    <section class="archive-section section-shell" id="memories">
+      <div class="section-topline"><span>02 / THE ARCHIVE</span><span>FOUR FRAGMENTS, INFINITE MEANING</span></div>
+      <div class="archive-heading">
+        <div><p class="eyebrow">MOMENTS WORTH KEEPING</p><h2>Proof that<br><em>we were here.</em></h2></div>
+        <p class="archive-copy">Beberapa detik yang mungkin terlihat biasa bagi dunia, tapi selalu punya tempat khusus di kepala kita. Sentuh tiap foto untuk membaca sisi belakangnya.</p>
       </div>
       <div class="polaroid-grid">
-        <button class="polaroid" type="button" aria-pressed="false">
-          <span class="polaroid-inner">
-            <span class="polaroid-front"><span class="polaroid-image image-one"><span>01</span></span><span class="polaroid-caption">the first little date</span></span>
-            <span class="polaroid-back"><span class="back-heart">♡</span><strong>Hari pertama kita.</strong><small>Masih ingat rasa gugup yang berubah jadi senyum sepanjang hari?</small><em>— a favorite memory</em></span>
-          </span>
-        </button>
-        <button class="polaroid tilt-left" type="button" aria-pressed="false">
-          <span class="polaroid-inner">
-            <span class="polaroid-front"><span class="polaroid-image image-two"><span>02</span></span><span class="polaroid-caption">somewhere with you</span></span>
-            <span class="polaroid-back"><span class="back-heart">♡</span><strong>Tempat jadi lebih indah.</strong><small>Bukan soal ke mana kita pergi, tapi siapa yang berjalan di sampingku.</small><em>— a favorite memory</em></span>
-          </span>
-        </button>
-        <button class="polaroid tilt-right" type="button" aria-pressed="false">
-          <span class="polaroid-inner">
-            <span class="polaroid-front"><span class="polaroid-image image-three"><span>03</span></span><span class="polaroid-caption">laughing for no reason</span></span>
-            <span class="polaroid-back"><span class="back-heart">♡</span><strong>Tawa yang sederhana.</strong><small>Hal receh bersamamu selalu punya cara untuk jadi kenangan.</small><em>— a favorite memory</em></span>
-          </span>
-        </button>
-        <button class="polaroid tilt-left" type="button" aria-pressed="false">
-          <span class="polaroid-inner">
-            <span class="polaroid-front"><span class="polaroid-image image-four"><span>04</span></span><span class="polaroid-caption">our ordinary sunday</span></span>
-            <span class="polaroid-back"><span class="back-heart">♡</span><strong>Rumah adalah rasa.</strong><small>Hari biasa terasa istimewa saat kita melewatinya bersama.</small><em>— a favorite memory</em></span></span>
-        </button>
+        <button class="polaroid memory-one" type="button" aria-pressed="false"><span class="polaroid-inner"><span class="polaroid-front"><span class="polaroid-image"><span class="memory-number">01 / FIRSTS</span></span></span><span class="polaroid-back"><span class="back-mark">♡</span><strong>Hari pertama kita.</strong><small>Masih ingat rasa gugup yang berubah jadi senyum sepanjang hari?</small><em>— a favourite memory</em></span></span></button>
+        <button class="polaroid memory-two" type="button" aria-pressed="false"><span class="polaroid-inner"><span class="polaroid-front"><span class="polaroid-image"><span class="memory-number">02 / SOMEWHERE</span></span></span><span class="polaroid-back"><span class="back-mark">♡</span><strong>Tempat jadi lebih indah.</strong><small>Bukan soal ke mana kita pergi, tapi siapa yang berjalan di sampingku.</small><em>— a favourite memory</em></span></span></button>
+        <button class="polaroid memory-three" type="button" aria-pressed="false"><span class="polaroid-inner"><span class="polaroid-front"><span class="polaroid-image"><span class="memory-number">03 / LAUGHTER</span></span></span><span class="polaroid-back"><span class="back-mark">♡</span><strong>Tawa yang sederhana.</strong><small>Hal receh bersamamu selalu punya cara untuk jadi kenangan.</small><em>— a favourite memory</em></span></span></button>
+        <button class="polaroid memory-four" type="button" aria-pressed="false"><span class="polaroid-inner"><span class="polaroid-front"><span class="polaroid-image"><span class="memory-number">04 / EVERYDAY</span></span></span><span class="polaroid-back"><span class="back-mark">♡</span><strong>Rumah adalah rasa.</strong><small>Hari biasa terasa istimewa saat kita melewatinya bersama.</small><em>— a favourite memory</em></span></span></button>
       </div>
-      <p class="gallery-hint">♡ klik foto untuk membaliknya · klik lagi untuk kembali</p>
+      <p class="archive-footnote"><span>✳</span> FLIP THE MEMORY. KEEP THE FEELING.</p>
     </section>
 
-    <section class="letter-section section-wrap section-pad" id="letter">
-      <div class="letter-intro"><p class="eyebrow">sealed with love</p><h2>A little letter,<br><em>just for you.</em></h2><p>Ada beberapa hal yang kadang sulit diucapkan langsung. Jadi, kubiarkan surat kecil ini yang menyampaikannya.</p></div>
-      <div class="letter-stage">
-        <button class="envelope" id="envelope" type="button" aria-expanded="false" aria-label="Buka surat cinta">
-          <span class="envelope-back"></span><span class="envelope-paper"></span><span class="envelope-flap"></span><span class="envelope-front"></span><span class="envelope-seal">♡</span>
-        </button>
-        <p class="envelope-instruction" id="envelopeInstruction">ketuk segelnya untuk membuka surat</p>
-        <article class="love-letter" id="loveLetter" aria-hidden="true">
-          <p class="letter-date">A NOTE FROM MY HEART</p>
-          <h3>Untuk orang<br>kesayanganku,</h3>
-          <p>Terima kasih sudah hadir dan memilih untuk berjalan bersamaku. Terima kasih untuk sabar yang kamu berikan, tawa yang kita bagi, dan hal-hal kecil yang mungkin terlihat sederhana tetapi selalu berarti.</p>
-          <p>Aku tahu perjalanan kita tidak selalu mudah. Ada hari yang manis, ada hari yang melelahkan. Namun, aku bersyukur karena kita terus belajar memahami, tumbuh, dan saling menggenggam.</p>
-          <p>Semoga kita selalu punya alasan untuk pulang satu sama lain. Mari kumpulkan lebih banyak cerita, lebih banyak tawa, dan lebih banyak hari yang bisa kita sebut milik kita.</p>
-          <p class="letter-closing">Dengan seluruh sayangku,</p>
-          <p class="handwritten letter-sign">your favorite person ♡</p>
-        </article>
+    <section class="letter-section" id="letter">
+      <div class="letter-shell">
+        <div class="section-topline"><span>03 / THE LETTER</span><span>UNSENT, BUT NEVER UNFELT</span></div>
+        <div class="letter-layout">
+          <div class="letter-intro"><p class="eyebrow">WORDS I WANT YOU TO KEEP</p><h2>For you,<br><em>in every lifetime.</em></h2><p>Ada rasa yang kadang terlalu penuh untuk disampaikan dalam satu percakapan. Jadi, aku menuliskannya di sini.</p><span class="letter-edition">PERSONAL CORRESPONDENCE · NO. 001</span></div>
+          <div class="letter-stage">
+            <article class="love-letter" id="loveLetter" aria-hidden="true">
+              <p class="letter-date">A NOTE FROM MY HEART · 01</p>
+              <h3>Untuk orang<br>kesayanganku,</h3>
+              <p>Terima kasih sudah hadir dan memilih untuk berjalan bersamaku. Terima kasih untuk sabar yang kamu berikan, tawa yang kita bagi, dan hal-hal kecil yang mungkin terlihat sederhana tetapi selalu berarti.</p>
+              <p>Aku tahu perjalanan kita tidak selalu mudah. Ada hari yang manis, ada hari yang melelahkan. Namun, aku bersyukur karena kita terus belajar memahami, tumbuh, dan saling menggenggam.</p>
+              <p>Semoga kita selalu punya alasan untuk pulang satu sama lain. Mari kumpulkan lebih banyak cerita, lebih banyak tawa, dan lebih banyak hari yang bisa kita sebut milik kita.</p>
+              <p class="letter-closing">Dengan seluruh sayangku,</p><p class="letter-sign">your favourite person ♡</p>
+            </article>
+            <button class="envelope" id="envelope" type="button" aria-expanded="false" aria-label="Buka surat cinta"><span class="envelope-back"></span><span class="envelope-paper"></span><span class="envelope-flap"></span><span class="envelope-front"></span><span class="envelope-seal">♡</span></button>
+            <p class="envelope-instruction" id="envelopeInstruction">TAP THE SEAL TO OPEN</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="wishes-section section-wrap section-pad" id="wishes">
-      <div class="section-heading"><p class="eyebrow">make a little wish</p><h2>To more candles,<br><em>more tomorrows.</em></h2><p>Satu lilin untuk semua yang sudah kita lewati, dan satu harapan untuk hari-hari yang masih menunggu.</p></div>
+    <section class="wishes-section section-shell" id="wishes">
+      <div class="section-topline"><span>04 / THE NEXT CHAPTER</span><span>STILL, THERE IS MORE</span></div>
+      <div class="wishes-heading"><p class="eyebrow">A WISH FOR WHAT COMES NEXT</p><h2>May our story<br><em>keep unfolding.</em></h2><p>Tiup lilinnya. Simpan satu harapan. Lalu mari kita buat ruang untuk semua hal baik yang belum datang.</p></div>
       <div class="celebration-layout">
         <div class="cake-area">
-          <div class="cake" aria-label="Kue anniversary dengan satu lilin">
-            <div class="candle"><span class="flame" id="flame"></span><span class="smoke" id="smoke"></span><span class="wick"></span></div>
-            <div class="cake-top"></div><div class="cake-body"><span class="icing-drip drip-one"></span><span class="icing-drip drip-two"></span><span class="icing-drip drip-three"></span></div><div class="cake-plate"></div>
-            <span class="cake-sparkle cake-sparkle-one">✦</span><span class="cake-sparkle cake-sparkle-two">♡</span>
-          </div>
-          <button class="button button-primary blow-button" id="blowCandle" type="button">Tiup Lilin 🎂</button>
-          <p class="candle-status" id="candleStatus" aria-live="polite">Pejamkan mata, lalu buat satu harapan.</p>
+          <div class="cake-label">A SMALL CAKE FOR A BIG LITTLE LOVE</div>
+          <div class="cake" aria-label="Kue anniversary dengan satu lilin"><span class="cake-flower flower-one">✳</span><span class="cake-flower flower-two">✳</span><div class="candle"><span class="flame" id="flame"></span><span class="smoke" id="smoke"></span><span class="wick"></span></div><div class="cake-top"></div><div class="cake-body"><span class="icing-drip drip-one"></span><span class="icing-drip drip-two"></span><span class="icing-drip drip-three"></span><span class="cake-inscription">always, us.</span></div><div class="cake-plate"></div></div>
+          <button class="button button-dark blow-button" id="blowCandle" type="button">Tiup lilin <span>✳</span></button>
+          <p class="candle-status" id="candleStatus" aria-live="polite">Make a wish, then let it go.</p>
         </div>
         <div class="wish-panel">
-          <div class="wish-panel-heading"><span class="wish-icon">✧</span><div><h3>Our little wishes</h3><p>Tulis harapan kecil untuk masa depan kita.</p></div></div>
+          <div class="wish-panel-heading"><span class="wish-index">01—∞</span><div><h3>Things we hope for</h3><p>Harapan kecil untuk masa depan kita.</p></div></div>
           <form id="wishForm">
-            <label class="sr-only" for="wishInput">Tulis harapan</label>
+            <label for="wishInput">TULIS HARAPANMU</label>
             <textarea id="wishInput" maxlength="240" rows="3" placeholder="Semoga suatu hari nanti kita..." required></textarea>
-            <div class="wish-form-bottom"><span id="charCount">0 / 240</span><button class="button button-dark" type="submit">Simpan harapan <span>↗</span></button></div>
+            <div class="wish-form-bottom"><span id="charCount">0 / 240</span><button class="button button-outline" type="submit">Simpan harapan <span>↗</span></button></div>
           </form>
-          <div class="wish-list-wrap"><div class="wish-list-title"><span>Saved wishes</span><span id="wishCount">0 wishes</span></div><ul class="wish-list" id="wishList"><li class="empty-wishes">Belum ada harapan tersimpan. Jadilah yang pertama ♡</li></ul></div>
-          <p class="storage-note">Harapan tersimpan di browser ini melalui localStorage.</p>
+          <div class="wish-list-wrap"><div class="wish-list-title"><span>OUR PRIVATE LIST</span><span id="wishCount">0 wishes</span></div><ul class="wish-list" id="wishList"><li class="empty-wishes">Belum ada harapan tersimpan. Jadilah yang pertama ♡</li></ul></div>
+          <p class="storage-note">Disimpan di browser ini · hanya kamu yang bisa melihatnya di perangkat ini.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"><a class="wordmark" href="#home">little<span>forever</span>.</a><p>made with love, for our story ♡</p><a href="#home" class="back-top">back to top ↑</a></footer>
-
+  <footer class="site-footer"><a class="brand" href="#home"><span class="brand-mark">A<span>♡</span>U</span><span class="brand-name">THE ART OF US<small>AN ANNIVERSARY EDITION</small></span></a><p>AN OPEN-ENDED LOVE STORY <span>✳</span></p><a href="#home" class="back-top">BACK TO THE BEGINNING ↑</a></footer>
   <audio id="backgroundMusic" src="./assets/bergema-sampai-selamanya.mp3" preload="none" loop></audio>
 </body>
 </html>

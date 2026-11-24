@@ -1,10 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap');
 
-:root {
-  --cream: #FDF8F5; --peach: #FBEAE2; --rose: #C97A7E; --sand: #E8C3B0;
-  --espresso: #2E2320; --taupe: #6E5A54; --paper: #fffaf0;
-  --serif: "Fraunces", Georgia, serif; --sans: "Plus Jakarta Sans", sans-serif; --script: "Caveat", cursive;
-  --shadow: 0 24px 70px rgba(86, 55, 45, .10);
+:root{
+  /* Warm ivory */
+  --paper:#F5F1E9;
+  --paper-deep:#EAE3D7;
+
+  /* Soft espresso */
+  --ink:#302C28;
+  --ink-soft:#71685F;
+
+  /* Elegant olive */
+  --forest:#414E43;
+  --forest-dark:#303B33;
+
+  /* Muted rose */
+  --rust:#A66F63;
+  --rust-light:#C18D7F;
+
+  /* Antique gold */
+  --ochre:#B99A6A;
+
+  /* Subtle borders */
+  --line:rgba(48,44,40,.15);
+  --white:#FFFCF6;
+
+  --serif:"Playfair Display",Georgia,serif;
+  --sans:"DM Sans",Arial,sans-serif;
+  --mono:"DM Mono",monospace;
+
+  --wrap:min(1240px,calc(100% - 112px));
+  --ease:cubic-bezier(.2,.75,.25,1);
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }

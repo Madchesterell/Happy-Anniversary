@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap');
 
 :root{
-  /* Warm ivory */
-  --paper:#F5F1E9;
-  --paper-deep:#EAE3D7;
+  /* Background utama */
+  --paper:#211D1A;
+  --paper-deep:#302720;
 
-  /* Soft espresso */
-  --ink:#302C28;
-  --ink-soft:#71685F;
+  /* Warna tulisan */
+  --ink:#F2E8DC;
+  --ink-soft:#B9A99A;
 
-  /* Elegant olive */
-  --forest:#414E43;
-  --forest-dark:#303B33;
+  /* Hijau gelap elegan */
+  --forest:#39463B;
+  --forest-dark:#252F29;
 
-  /* Muted rose */
-  --rust:#A66F63;
-  --rust-light:#C18D7F;
+  /* Burgundy dan rose */
+  --rust:#A45F55;
+  --rust-light:#C18472;
 
-  /* Antique gold */
-  --ochre:#B99A6A;
+  /* Emas antik */
+  --ochre:#C3A16D;
 
-  /* Subtle borders */
-  --line:rgba(48,44,40,.15);
-  --white:#FFFCF6;
+  /* Garis dan permukaan terang */
+  --line:rgba(242,232,220,.16);
+  --white:#F8F0E6;
 
   --serif:"Playfair Display",Georgia,serif;
   --sans:"DM Sans",Arial,sans-serif;

@@ -401,3 +401,36 @@ body{min-width:320px}
     min-height: 0;
   }
 }
+
+
+/* HERO IMAGE — DESKTOP REFINEMENT */
+@media (min-width: 701px) {
+  .hero-visual {
+    width: 88%;
+    max-width: 520px;
+  }
+
+  .hero-image {
+    aspect-ratio: 4 / 5;
+    height: auto;
+    min-height: 0;
+    border-radius: 18px;
+  }
+}
+
+/* HERO IMAGE — ROUNDED CORNERS */
+.hero-image {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .hero-visual {
+    width: calc(100% - 18px);
+  }
+
+  .hero-image {
+    border-radius: 14px;
+  }
+}

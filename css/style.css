@@ -451,8 +451,25 @@ body{min-width:320px}
 
 
 /* PASSWORD GATE — warm, cinematic entry screen */
-body.is-locked { overflow: hidden; }
-body.is-locked > :not(.password-gate) { visibility: hidden; }
+/* While the password screen is active, remove the page behind it
+   from layout entirely so it cannot create a long blank scroll area. */
+html:has(body.is-locked) {
+  height: 100%;
+  overflow: hidden !important;
+}
+body.is-locked {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden !important;
+}
+body.is-locked > :not(.password-gate) {
+  display: none !important;
+}
 .password-gate {
   position: fixed;
   inset: 0;
@@ -472,10 +489,6 @@ body.is-locked > :not(.password-gate) { visibility: hidden; }
   opacity: 1;
   visibility: visible;
   transition: opacity .85s ease, visibility .85s ease;
-}
-body.is-locked {
-  height: 100%;
-  overflow: hidden !important;
 }
 body.is-locked .skip-link {
   display: none;

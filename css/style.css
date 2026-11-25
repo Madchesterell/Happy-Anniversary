@@ -13,8 +13,25 @@ a{color:inherit;text-decoration:none}
 button,textarea{font:inherit}
 button{color:inherit}
 ::selection{background:var(--rust);color:white}
-.skip-link{position:absolute;left:16px;top:-60px;z-index:99;background:var(--ink);color:white;padding:12px 18px}
-.skip-link:focus{top:12px}
+/* Keep the accessibility shortcut out of the normal visual layout.
+   It appears at the top only when reached with a keyboard. */
+.skip-link{
+  position:fixed;
+  left:16px;
+  top:12px;
+  z-index:1100;
+  padding:12px 18px;
+  border-radius:8px;
+  background:var(--ink);
+  color:var(--paper);
+  transform:translateY(calc(-100% - 20px));
+  transition:transform .2s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible{
+  top:12px;
+  transform:translateY(0);
+}
 :focus-visible{outline:3px solid var(--rust);outline-offset:4px}
 .topbar{height:88px;padding:0 max(56px,calc((100vw - 1240px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--paper);position:relative;z-index:20}
 .brand{display:flex;align-items:center;gap:12px}
@@ -437,12 +454,31 @@ body{min-width:320px}
 body.is-locked { overflow: hidden; }
 body.is-locked > :not(.password-gate) { visibility: hidden; }
 .password-gate {
-  position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center;
-  min-height: 100svh; padding: 28px 18px;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 28px 18px;
   background: radial-gradient(ellipse at 50% 35%, rgba(164,95,85,.16), transparent 42%),
               linear-gradient(145deg, #211D1A 0%, #302720 58%, #252F29 100%);
-  opacity: 1; visibility: visible;
+  opacity: 1;
+  visibility: visible;
   transition: opacity .85s ease, visibility .85s ease;
+}
+body.is-locked {
+  height: 100%;
+  overflow: hidden !important;
+}
+body.is-locked .skip-link {
+  display: none;
 }
 .password-gate::before, .password-gate::after {
   content: ""; position: absolute; width: min(58vw, 520px); aspect-ratio: 1;
@@ -496,4 +532,13 @@ body.is-unlocked .password-gate { opacity: 0; visibility: hidden; pointer-events
 @media (prefers-reduced-motion: reduce) {
   .password-card { animation: none; }
   .password-gate, .password-submit { transition: none; }
+}
+
+
+@media (max-height: 680px) {
+  .password-gate { place-items: start center; padding-top: 22px; padding-bottom: 22px; }
+  .password-card { padding-top: 28px; padding-bottom: 28px; }
+  .gate-brand { margin-bottom: 16px; }
+  .gate-copy { margin-top: 14px; margin-bottom: 18px; }
+  .gate-footnote { margin-top: 18px; }
 }

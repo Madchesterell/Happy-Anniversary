@@ -2,7 +2,39 @@
 const $ = (s, root=document) => root.querySelector(s);
 const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 
-/* Music starts only after a deliberate user action. */
+/* Password gate: the correct password unlocks the site and requests music playback. */
+const PASSWORD = "25112026";
+const passwordGate = $("#passwordGate");
+const passwordForm = $("#passwordForm");
+const passwordInput = $("#sitePassword");
+const passwordError = $("#passwordError");
+
+passwordForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!passwordInput || !passwordGate) return;
+
+  if (passwordInput.value.trim() !== PASSWORD) {
+    if (passwordError) passwordError.textContent = "That password is not quite right. Please try again.";
+    passwordInput.value = "";
+    passwordInput.focus();
+    return;
+  }
+
+  if (passwordError) passwordError.textContent = "";
+  document.body.classList.remove("is-locked");
+  document.body.classList.add("is-unlocked");
+  passwordGate.setAttribute("aria-hidden", "true");
+  passwordForm.querySelector("button")?.setAttribute("disabled", "disabled");
+
+  // Playback is requested directly from the password submit user gesture.
+  await playMusicWithFade();
+});
+
+passwordInput?.addEventListener("input", () => {
+  if (passwordError) passwordError.textContent = "";
+});
+
+/* Music can also be controlled manually after unlocking. */
 const audio = $("#backgroundMusic");
 const musicToggle = $("#musicToggle");
 const musicButtonText = $("#musicButtonText");

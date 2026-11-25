@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#211D1A">
   <meta name="description" content="Sebuah arsip kecil tentang kita—tentang awal, tumbuh, dan memilih satu sama lain.">
-  <meta property="og:title" content="The Art of Us — Anniversary Edition">
+  <meta property="og:title" content="Milolo &amp; Reroll — Anniversary Edition">
   <meta property="og:description" content="A little archive of everything that makes us, us.">
   <meta property="og:type" content="website">
-  <title>The Art of Us — Anniversary Edition</title>
+  <title>Milolo &amp; Reroll — Anniversary Edition</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
@@ -17,10 +17,30 @@
   <script src="./js/animations.js" defer></script>
   <script src="./js/script.js" defer></script>
 </head>
-<body>
+<body class="is-locked">
+  <!-- PASSWORD GATE -->
+  <section class="password-gate" id="passwordGate" aria-labelledby="gateTitle">
+    <div class="password-card">
+      <div class="gate-brand">Milolo &amp; Reroll</div>
+      <p class="gate-eyebrow">A PRIVATE LITTLE WORLD</p>
+      <h1 id="gateTitle">A little secret<br><em>for you.</em></h1>
+      <p class="gate-copy">Before you enter our little world, there is one small secret to unlock.</p>
+      <form class="password-form" id="passwordForm">
+        <label class="visually-hidden" for="sitePassword">Enter the secret password</label>
+        <input id="sitePassword" name="password" type="password"
+          placeholder="Enter our secret password" autocomplete="off"
+          inputmode="numeric" required aria-describedby="passwordError">
+        <button class="password-submit" type="submit">
+          <span>Unlock our story</span><span aria-hidden="true">↗</span>
+        </button>
+        <p class="password-error" id="passwordError" role="alert" aria-live="polite"></p>
+      </form>
+      <p class="gate-footnote">MADE WITH LOVE · JUST FOR US ♡</p>
+    </div>
+  </section>
   <a class="skip-link" href="#main">Lewati ke konten</a>
   <header class="topbar">
-    <a class="brand" href="#home" aria-label="The Art of Us, kembali ke atas"><span class="brand-mark">A<span>♡</span>U</span><span class="brand-name">THE ART OF US<small>AN ANNIVERSARY EDITION</small></span></a>
+    <a class="brand" href="#home" aria-label="Milolo &amp; Reroll, kembali ke atas"><span class="brand-wordmark">Milolo &amp; Reroll</span></a>
     <nav class="main-nav" aria-label="Navigasi utama">
       <a href="#chapters">Our story</a><a href="#memories">The archive</a><a href="#letter">A letter</a><a href="#wishes">The next</a>
     </nav>
@@ -41,7 +61,7 @@
       </div>
       <div class="hero-visual" aria-label="Ilustrasi kenangan saat senja" data-enter>
         <div class="visual-index">FIG. 01 <span>THE TWO OF US</span></div>
-        <<div class="hero-image">
+        <div class="hero-image">
   <img
     src="./assets/hero.webp"
     alt="Foto berdua dalam kenangan kita"
@@ -141,7 +161,7 @@
     </section>
   </main>
 
-  <footer class="site-footer"><a class="brand" href="#home"><span class="brand-mark">A<span>♡</span>U</span><span class="brand-name">THE ART OF US<small>AN ANNIVERSARY EDITION</small></span></a><p>AN OPEN-ENDED LOVE STORY <span>✳</span></p><a href="#home" class="back-top">BACK TO THE BEGINNING ↑</a></footer>
+  <footer class="site-footer"><a class="brand" href="#home" aria-label="Milolo &amp; Reroll, kembali ke atas"><span class="brand-wordmark">Milolo &amp; Reroll</span></a><p>AN OPEN-ENDED LOVE STORY <span>✳</span></p><a href="#home" class="back-top">BACK TO THE BEGINNING ↑</a></footer>
   <audio id="backgroundMusic" src="./assets/bergema-sampai-selamanya.mp3" preload="none" loop></audio>
 </body>
 </html>

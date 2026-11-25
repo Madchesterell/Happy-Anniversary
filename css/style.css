@@ -18,10 +18,7 @@ button{color:inherit}
 :focus-visible{outline:3px solid var(--rust);outline-offset:4px}
 .topbar{height:88px;padding:0 max(56px,calc((100vw - 1240px)/2));display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:var(--paper);position:relative;z-index:20}
 .brand{display:flex;align-items:center;gap:12px}
-.brand-mark{font:600 20px var(--serif);letter-spacing:-.08em;color:var(--forest);position:relative}
-.brand-mark span{font-size:11px;color:var(--rust);vertical-align:4px;margin:0 2px}
-.brand-name{font:500 10px/1.25 var(--mono);letter-spacing:.13em}
-.brand-name small{display:block;font-size:8px;color:var(--ink-soft);letter-spacing:.17em;margin-top:5px}
+.brand-wordmark{font:600 clamp(17px,1.6vw,21px)/1.1 var(--serif);letter-spacing:-.035em;color:var(--ochre);white-space:nowrap}
 .main-nav{display:flex;gap:34px}
 .main-nav a{font-size:12px;color:var(--ink-soft);position:relative;padding:9px 0}
 .main-nav a:after{content:"";position:absolute;bottom:2px;left:0;width:0;height:1px;background:var(--rust);transition:width .3s var(--ease)}
@@ -189,7 +186,7 @@ button{color:inherit}
   :root{--wrap:calc(100% - 40px)}
   html{scroll-padding-top:72px}
   .topbar{height:72px;padding:0 20px}.main-nav{display:none}
-  .brand-mark{font-size:18px}.brand-name{font-size:9px}.music-control{height:42px;padding:0 12px;font-size:10px}
+  .brand-wordmark{font-size:17px}.music-control{height:42px;padding:0 12px;font-size:10px}
   .hero{min-height:0;display:flex;flex-direction:column;align-items:stretch;gap:42px;padding:65px 0 92px}
   .hero-copy{padding:0}.hero h1{font-size:clamp(54px,13vw,76px)}.hero-lede{font-size:14px;margin:22px 0}
   .hero-cta-row{align-items:flex-start;gap:15px;flex-direction:column}.hero-script{margin-top:24px;font-size:20px}
@@ -236,7 +233,7 @@ button{color:inherit}
 /* DARK WARM ELEGANCE — warm, low-glare dark theme overrides */
 body{background:var(--paper);color:var(--ink)}
 .topbar{background:rgba(33,29,26,.96)}
-.brand-mark{color:var(--ochre)}
+.brand-wordmark{color:var(--ochre)}
 .music-control:hover{background:var(--forest);border-color:var(--forest);color:var(--white)}
 .button-dark{background:var(--forest);color:var(--white)}
 .button-dark:hover{background:var(--rust)}
@@ -433,4 +430,70 @@ body{min-width:320px}
   .hero-image {
     border-radius: 14px;
   }
+}
+
+
+/* PASSWORD GATE — warm, cinematic entry screen */
+body.is-locked { overflow: hidden; }
+body.is-locked > :not(.password-gate) { visibility: hidden; }
+.password-gate {
+  position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center;
+  min-height: 100svh; padding: 28px 18px;
+  background: radial-gradient(ellipse at 50% 35%, rgba(164,95,85,.16), transparent 42%),
+              linear-gradient(145deg, #211D1A 0%, #302720 58%, #252F29 100%);
+  opacity: 1; visibility: visible;
+  transition: opacity .85s ease, visibility .85s ease;
+}
+.password-gate::before, .password-gate::after {
+  content: ""; position: absolute; width: min(58vw, 520px); aspect-ratio: 1;
+  border: 1px solid rgba(195,161,109,.12); border-radius: 50%; pointer-events: none;
+}
+.password-gate::before { transform: translate(-28%, -22%); }
+.password-gate::after { width: min(72vw, 660px); transform: translate(24%, 18%); }
+.password-card {
+  position: relative; z-index: 1; width: min(100%, 460px);
+  padding: clamp(32px, 6vw, 58px); text-align: center;
+  border: 1px solid rgba(242,232,220,.15); border-radius: 26px;
+  background: rgba(33,29,26,.72); box-shadow: 0 28px 90px rgba(0,0,0,.24);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  animation: gate-arrive .9s cubic-bezier(.22,1,.36,1) both;
+}
+.gate-brand { color: var(--ochre); font: 600 clamp(25px, 5vw, 32px)/1.15 var(--serif); letter-spacing: -.035em; margin-bottom: 24px; }
+.gate-eyebrow { margin: 0 0 16px; color: var(--ochre); font: 9px var(--mono); letter-spacing: .2em; }
+.password-card h1 { margin: 0; color: var(--ink); font: 500 clamp(39px, 8vw, 58px)/1.02 var(--serif); letter-spacing: -.045em; }
+.password-card h1 em { color: var(--rust-light); font-weight: 500; }
+.gate-copy { max-width: 310px; margin: 20px auto 28px; color: var(--ink-soft); font-size: 13px; line-height: 1.8; }
+.password-form { display: grid; gap: 12px; }
+.password-form input {
+  width: 100%; min-height: 52px; padding: 0 17px;
+  border: 1px solid rgba(242,232,220,.23); border-radius: 12px;
+  outline: none; background: rgba(248,240,230,.06); color: var(--ink);
+  text-align: center; font: 13px var(--sans); letter-spacing: .12em;
+  transition: border-color .25s, background .25s, box-shadow .25s;
+}
+.password-form input::placeholder { color: rgba(185,169,154,.72); letter-spacing: .02em; }
+.password-form input:focus { border-color: var(--ochre); background: rgba(248,240,230,.09); box-shadow: 0 0 0 3px rgba(195,161,109,.1); }
+.password-submit {
+  min-height: 52px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 19px; border: 0; border-radius: 12px; background: var(--forest);
+  color: var(--white); cursor: pointer; font: 500 11px var(--mono); letter-spacing: .04em;
+  transition: transform .25s, background .25s;
+}
+.password-submit:hover { transform: translateY(-2px); background: var(--rust); }
+.password-submit:disabled { opacity: .7; cursor: wait; }
+.password-error { min-height: 18px; margin: 0; color: #E7A092; font-size: 11px; }
+.gate-footnote { margin: 28px 0 0; color: rgba(185,169,154,.68); font: 8px var(--mono); letter-spacing: .16em; }
+body.is-unlocked .password-gate { opacity: 0; visibility: hidden; pointer-events: none; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+@keyframes gate-arrive {
+  from { opacity: 0; transform: translate3d(0,18px,0) scale(.985); }
+  to { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+}
+@media (max-width: 520px) { .password-card { border-radius: 21px; padding: 34px 25px; } }
+@media (prefers-reduced-motion: reduce) {
+  .password-card { animation: none; }
+  .password-gate, .password-submit { transition: none; }
 }

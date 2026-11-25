@@ -109,10 +109,21 @@ button{color:inherit}
 .polaroid-front,.polaroid-back{position:absolute;inset:0;backface-visibility:hidden;padding:12px 12px 17px;background:#fffdf8;box-shadow:0 9px 24px rgba(32,42,36,.08);display:flex;flex-direction:column}
 .polaroid-image{flex:1;min-height:0;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:15px}
 .polaroid-image:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,30,24,.38),transparent 52%)}
-.memory-one .polaroid-image{background:radial-gradient(ellipse at 68% 25%,#f1d4a9 0 11%,transparent 12%),linear-gradient(140deg,#a75f4d,#d7a17d 48%,#667665)}
-.memory-two .polaroid-image{background:radial-gradient(ellipse at 25% 40%,#e9d2ad 0 10%,transparent 11%),linear-gradient(135deg,#8c9a83,#c4a887 55%,#6a7160)}
-.memory-three .polaroid-image{background:radial-gradient(circle at 55% 40%,#edc8a7 0 16%,transparent 17%),linear-gradient(155deg,#c27b62,#e0b58c 50%,#66786b)}
-.memory-four .polaroid-image{background:radial-gradient(ellipse at 70% 25%,#f1d9b6 0 12%,transparent 13%),linear-gradient(145deg,#6c7664,#c9a98b 55%,#a85f4e)}
+.memory-one .polaroid-image {
+  background: url("../assets/memory-01.webp") center / cover no-repeat;
+}
+
+.memory-two .polaroid-image {
+  background: url("../assets/memory-02.webp") center / cover no-repeat;
+}
+
+.memory-three .polaroid-image {
+  background: url("../assets/memory-03.webp") center / cover no-repeat;
+}
+
+.memory-four .polaroid-image {
+  background: url("../assets/memory-04.webp") center / cover no-repeat;
+}
 .memory-number{position:relative;z-index:1;color:white;font:9px var(--mono);letter-spacing:.12em}
 .polaroid-caption{font:italic 17px var(--serif);text-align:center;padding:16px 2px 0;color:var(--ink)}
 .polaroid-back{transform:rotateY(180deg);background:#e9dfd0;justify-content:center;align-items:flex-start;padding:24px}

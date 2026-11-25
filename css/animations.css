@@ -13,7 +13,9 @@
   pointer-events: none;
   contain: strict;
 }
-body > :not(.ambient-dust) { position: relative; z-index: 1; }
+/* Only the real page sections sit above the dust. Never touch .password-gate / .skip-link (they are position:fixed). */
+.topbar, main, .site-footer { position: relative; z-index: 1; }
+.topbar { z-index: 20; }
 .dust-particle {
   position: absolute;
   left: var(--x);
